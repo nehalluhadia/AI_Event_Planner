@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Neighborhood Event Planner</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='static.css') }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
+<body>
+  <!-- Banner Image -->
+  <div class="banner">
+    <img src="{{ url_for('static', filename='images/community_banner.jpg') }}" alt="Neighborhood Event Banner">
+    <div class="banner-title">
+     Neighbourhood Event Planner🎉
+  </div>
+  </div>
+
+  <div class="container">
+    <!--  <h1>🎉 Neighborhood Event Planner</h1>   -->
+    <form method="POST" class="card">
+      <div class="grid">
+        <div class="field">
+          <label>Event Type</label>
+          <select name="event_type" required>
+            <option>Block Party</option>
+            <option>Cultural Fair</option>
+            <option>Talent Show</option>
+            <option>Potluck</option>
+            <option>Cleanup Drive</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Expected Attendance</label>
+          <input type="number" name="guests" min="1" value="50" required/>
+        </div>
+        <div class="field">
+          <label>Budget</label>
+          <select name="budget">
+            <option>Shoestring</option>
+            <option selected>Moderate</option>
+            <option>Premium</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Location</label>
+          <input type="text" name="location" placeholder="Neighborhood / City"/>
+        </div>
+        <div class="field">
+          <label>Organizing Group / Neighborhood Name</label>
+          <input type="text" name="organizing_group" placeholder="e.g., Elm Street Neighbors" required/>
+        </div>
+        <div class="field">
+          <label>Event Date</label>
+          <input type="date" name="event_date" required/>
+        </div>
+        <div class="field">
+          <label>Event Time</label>
+          <input type="time" name="event_time" required/>
+        </div>
+        <div class="field">
+          <label>Venue / Meeting Point</label>
+          <input type="text" name="venue" placeholder="e.g., Community Park" required/>
+        </div>
+        <div class="field">
+          <label>Theme / Tone</label>
+          <select name="tone">
+            <option>casual</option>
+            <option>festive</option>
+            <option>formal</option>
+            <option>family-friendly</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn">Generate Plan</button>
+    </form>
+  </div>
+</body>
+</html>

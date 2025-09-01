@@ -1,0 +1,9 @@
+streamlit
+openai
+fpdf2
+python-dotenv
+reportlab
+flask
+
+
+

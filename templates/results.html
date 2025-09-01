@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Neighborhood Event Plan</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='static.css') }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
+<body>
+  <!-- Banner Image -->
+  <div class="banner">
+    <img src="{{ url_for('static', filename='images/community_banner.jpg') }}" alt="Community Event Banner">
+    <div class="banner-title">
+     Neighbourhood Event Planner🎉
+  </div>
+  </div>
+
+  <div class="container">
+    <!-- <h1>🎉 Neighborhood Event Plan</h1> -->
+
+    <!-- Invitations -->
+    <section class="card">
+      <h2>📜 Community Invitations</h2>
+      <div class="list">
+        {% for inv in invitations %}
+          <div class="item">
+            <h3>{{ inv.title }}</h3>
+            <p class="mono">{{ inv.body | replace('\n', '<br>') | safe }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- Ideas -->
+    <section class="card">
+      <h2>💡 Community Ideas</h2>
+      <div class="grid-3">
+        <div class="panel">
+          <h3>Themes</h3>
+          <ul>
+            {% for idea in ideas.get("Themes", []) %}
+              <li>{{ idea }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>Shared Food</h3>
+          <ul>
+            {% for idea in ideas.get("Food", []) %}
+              <li>{{ idea }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>Group Activities</h3>
+          <ul>
+            {% for idea in ideas.get("Activities", []) %}
+              <li>{{ idea }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="card">
+      <h2>🗓️ Community Timeline</h2>
+      <div class="timeline">
+        {% for block in timeline %}
+          <div class="tblock">
+            <div class="tperiod">{{ block.period }}</div>
+            <ul>
+              {% for task in block.tasks %}
+                <li>{{ task }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+</body>
+</html>

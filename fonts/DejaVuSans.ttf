@@ -1,0 +1,15 @@
+def export_to_pdf(filename, invitations, ideas, timeline):
+    pdf = PDF()
+    font_path = os.path.join("fonts", "DejaVuSans.ttf")
+
+    if os.path.exists(font_path):
+        pdf.add_font("DejaVu", "", font_path, uni=True)
+        pdf.add_font("DejaVu", "B", font_path, uni=True)
+        pdf.add_font("DejaVu", "I", font_path, uni=True)
+        font_name = "DejaVu"
+    else:
+        # fallback to helvetica (no emoji support)
+        font_name = "helvetica"
+
+    pdf.add_page()
+    pdf.set_font(font_name, "", 12)
